@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        VENV = "/home/vikrant/automation/venv-ansible/bin"
+        VENV = "/home/vikrant/venv-ansible/bin"
     }
 
     stages {
