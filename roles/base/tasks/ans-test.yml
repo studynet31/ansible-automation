@@ -1,0 +1,11 @@
+- name: Show VLANs that will be configured
+  debug:
+    msg: "VLAN {{ item.id }} - {{ item.name }} - IP {{ item.ip }} {{ item.mask }}"
+  loop: "{{ vlans }}"
+
+- name: Show Loopbaks that will be configued
+  debug:
+    msg: "{{ item.name }} - IP {{ item.ip }} {{ item.mask }}"
+  loop: "{{ loopbacks }}" 
+
+

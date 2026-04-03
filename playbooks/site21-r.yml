@@ -1,0 +1,6 @@
+- name: Configure Branch21 routers & switches
+  hosts: switches
+  gather_facts: no
+  roles:
+    - switches
+

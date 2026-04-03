@@ -1,0 +1,18 @@
+---
+# switches login details 
+ansible_user: "admin"
+ansible_ssh_pass: "Cisco123"
+ansible_network_os: "ios"
+ansible_connection: "network_cli"
+  
+vlans:
+  - id: 40
+    name: Sales
+  - 0id: 41
+    name: Marketing
+  - id: 42
+    name: Engineering
+
+vlan_base_ip: "192.168"   # base IP for VLANs
+vlan_subnet_mask: "255.255.255.0"
+

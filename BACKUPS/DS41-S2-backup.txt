@@ -1,0 +1,202 @@
+Building configuration...
+
+Current configuration : 4794 bytes
+!
+! Last configuration change at 02:46:32 UTC Sun Aug 17 2025
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname DS41-S2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+username admin privilege 15 secret 5 $1$rF.h$WIXcrw1qL2PhCoBJqV31a/
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+ip domain-name vnet.com
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+spanning-tree vlan 1-4094 priority 4096
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet0/0
+ negotiation auto
+!
+interface GigabitEthernet0/1
+ description Link_to_Access_Layer
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ negotiation auto
+!
+interface GigabitEthernet0/2
+ description Link_to_Access_Layer
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ negotiation auto
+!
+interface GigabitEthernet0/3
+ negotiation auto
+!
+interface GigabitEthernet1/0
+ description Link_to_Secondary
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ negotiation auto
+ channel-group 1 mode active
+!
+interface GigabitEthernet1/1
+ description Link_to_Secondary
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ negotiation auto
+ channel-group 1 mode active
+!
+interface GigabitEthernet1/2
+ no switchport
+ ip address 10.41.211.2 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+ negotiation auto
+!
+interface GigabitEthernet1/3
+ no switchport
+ ip address 10.41.112.2 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+ negotiation auto
+!
+interface Vlan5
+ description MGMT_VLAN
+ ip address 10.41.5.3 255.255.255.0
+ standby 5 ip 10.41.5.5
+ standby 5 preempt
+!
+interface Vlan21
+ description DATA
+ ip address 10.41.21.3 255.255.255.0
+ standby 21 ip 10.41.21.5
+ standby 21 preempt
+!
+interface Vlan22
+ description Voice
+ ip address 10.41.22.3 255.255.255.0
+ standby 22 ip 10.41.22.5
+ standby 22 preempt
+!
+interface Vlan90
+ description WIFI
+ ip address 10.41.90.3 255.255.255.0
+ standby 90 ip 10.41.90.5
+ standby 90 preempt
+!
+interface Vlan91
+ description Ls91
+ ip address 10.41.91.3 255.255.255.0
+ standby 91 ip 10.41.91.5
+ standby 91 preempt
+!
+router ospf 1
+ router-id 0.0.41.4
+ prefix-suppression
+ nsf ietf helper strict-lsa-checking
+ passive-interface Vlan5
+ passive-interface Vlan21
+ passive-interface Vlan22
+ passive-interface Vlan90
+ passive-interface Vlan91
+ network 10.41.5.0 0.0.0.255 area 0
+ network 10.41.21.0 0.0.0.255 area 0
+ network 10.41.22.0 0.0.0.255 area 0
+ network 10.41.90.0 0.0.0.255 area 0
+ network 10.41.91.0 0.0.0.255 area 0
+ network 10.41.254.4 0.0.0.0 area 0
+!
+ip forward-protocol nd
+!
+ip http server
+ip http secure-server
+!
+ip ssh version 2
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec ^C
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+^C
+banner incoming ^C
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+^C
+banner login ^C
+IOSv - Cisco Systems Confidential -
+
+Supplemental End User License Restrictions
+
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+^C
+!
+line con 0
+line aux 0
+line vty 0 4
+ login local
+ transport input all
+ transport output all
+!
+!
+end

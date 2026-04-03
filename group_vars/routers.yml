@@ -1,0 +1,11 @@
+# routers login details 
+ansible_user: "admin"
+ansible_ssh_pass: "Cisco123"
+ansible_network_os: "ios"
+ansible_connection: "network_cli"
+
+loopbacks:
+ - {name: loopback222, ip: 1.22.22.1, mask: 255.255.255.255}
+ - {name: loopback223, ip: 3.22.22.3, mask: 255.255.255.255}
+ - {name: loopback224, ip: 4.22.22.4, mask: 255.255.255.255}
+

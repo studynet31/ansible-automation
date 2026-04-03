@@ -1,0 +1,11 @@
+# switches login details 
+ansible_user: "admin"
+ansible_ssh_pass: "Cisco123"
+ansible_network_os: "ios"
+ansible_connection: "network_cli"
+
+vlans:
+  - {id: 420, name: USERS, ip_base: 10.21.40, mask: 255.255.255.0, start: 4}
+  - {id: 421, name: SERVERS, ip_base: 10.21.41, mask: 255.255.255.0, start: 4}
+
+

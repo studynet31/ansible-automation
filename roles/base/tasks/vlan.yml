@@ -1,0 +1,19 @@
+---
+- name: Create VLAN
+  ios_config:
+    lines:
+      - vlan {{ item.id }}
+      - name {{ item.name }}
+  loop: "{{ vlans }}"
+  when: vlans is defined
+
+- name: Configure SVI
+  ios_config:
+    lines:
+      - interface Vlan{{ item.id }}
+      - description "test-Ansible"
+      - ip address {{ item.ip }} {{ item.mask }}
+      - no shutdown
+  loop: "{{ vlans }}"
+  when: vlans is defined
+

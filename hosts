@@ -1,0 +1,10 @@
+[routers]
+C21-R1 ansible_host=10.21.5.11
+C21-R2 ansible_host=10.21.5.12
+
+
+[switches]
+DS21-S1 ansible_host=10.21.5.2 switch_id=0
+DS21-S2 ansible_host=10.21.5.3 switch_id=1
+
+
