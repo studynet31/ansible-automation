@@ -28,7 +28,7 @@ pipeline {
 
                 $VENV/ansible-playbook \
                 -i hosts \
-                playbooks/interface_desc.yml
+                playbooks/site21-s.yml
                 '''
             }
         }
