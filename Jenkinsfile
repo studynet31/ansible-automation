@@ -27,7 +27,7 @@ pipeline {
                 $VENV/ansible --version
 
                 $VENV/ansible-playbook \
-                -i inventory/hosts \
+                -i hosts \
                 playbooks/site21-s.yml
                 '''
             }
