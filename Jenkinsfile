@@ -5,10 +5,6 @@ pipeline {
         VENV = "/home/vikrant/venv-ansible/bin"
     }
 
-    parameters {
-        string(name: 'PLAYBOOK', defaultValue: 'playbooks/site21-s.yml', description: 'Enter playbook path')
-    }
-
     stages {
 
         stage('Debug') {
