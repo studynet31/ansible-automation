@@ -23,13 +23,9 @@ pipeline {
 
         stage('Run Ansible') {
             steps {
-                sh """
-                $VENV/ansible --version
-
-                $VENV/ansible-playbook \
-                -i hosts \
-                ${PLAYBOOK}
-                """
+                sh '''
+                /home/vikrant/venv-ansible/bin/ansible-playbook -i hosts playbooks/site21-s.yml
+                '''
             }
         }
     }
