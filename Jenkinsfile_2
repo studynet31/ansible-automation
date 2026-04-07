@@ -14,7 +14,6 @@ parameters {
         'all',
         'switches',
         'routers',
-        'DS21-S1'
     ], description: 'Select target')
 }
 
