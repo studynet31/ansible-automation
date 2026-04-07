@@ -1,1 +1,32 @@
+pipeline {
+    agent any
 
+    environment {
+        VENV = "/home/vikrant/venv-ansible/bin"
+    }
+
+    stages {
+
+        stage('Debug') {
+            steps {
+                sh '''
+                echo "User:"
+                whoami
+
+                echo "Workspace:"
+                pwd
+
+                ls -l
+                '''
+            }
+        }
+
+        stage('Run Ansible') {
+            steps {
+                sh '''
+                /home/vikrant/venv-ansible/bin/ansible-playbook -i hosts playbooks/site21-s.yml
+                '''
+            }
+        }
+    }
+}
