@@ -4,6 +4,9 @@ pipeline {
     environment {
         VENV = "/home/vikrant/venv-ansible/bin"
     }
+    parameters {
+        string(name: 'PLAYBOOK', defaultValue: 'playbooks/site21-s.yml', description: 'Enter playbook path')
+    }
 
     stages {
 
@@ -23,9 +26,13 @@ pipeline {
 
         stage('Run Ansible') {
             steps {
-                sh '''
-                /home/vikrant/venv-ansible/bin/ansible-playbook -i hosts playbooks/site21-s.yml
-                '''
+                sh """
+                $VENV/ansible --version
+
+                $VENV/ansible-playbook \
+                -i hosts \
+                ${PLAYBOOK}
+                """
             }
         }
     }
