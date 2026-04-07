@@ -1,6 +1,7 @@
-- name: Configure Branch21 routers & switches
-  hosts: switches
+- name: Configure Branch21 routers only
+  hosts: routers
   gather_facts: no
+  ignore_unreachable: yes
   roles:
-    - switches
+    - routers
 

@@ -1,0 +1,10 @@
+---
+- name: Configure loopback interfaces
+  ios_config:
+    lines:
+      - interface {{ item.name }}
+      - description "test-Ansible"
+      - ip address {{ item.ip }} {{ item.mask }}
+  loop: "{{ loopbacks }}"
+
+
