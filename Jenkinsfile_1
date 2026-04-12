@@ -9,12 +9,6 @@ parameters {
         'playbooks/site21-s.yml',
         'playbooks/site21-r.yml'
     ], description: 'Select playbook')
-
-    choice(name: 'LIMIT', choices: [
-        'all',
-        'switches',
-        'routers',
-    ], description: 'Select target')
 }
 
     stages {
