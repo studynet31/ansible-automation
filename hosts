@@ -1,10 +1,29 @@
-[routers]
-C21-R1 ansible_host=10.21.5.11
-C21-R2 ansible_host=10.21.5.12
+[s21_eg_rtr]
+C21-R1 ansible_host=10.21.5.11 rtr_id=0
+C21-R2 ansible_host=10.21.5.12 rtr_id=1
 
+[s21_ds_swt]
+DS21-S1 ansible_host=10.21.5.2 swt_id=0
+DS21-S2 ansible_host=10.21.5.3 swt_id=1
 
-[switches]
-DS21-S1 ansible_host=10.21.5.2 switch_id=0
-DS21-S2 ansible_host=10.21.5.3 switch_id=1
+[s22_eg_rtr]
+C22-R1 ansible_host=10.22.5.11 rtr_id=0
+C22-R2 ansible_host=10.22.5.12 rtr_id=1
+
+[s22_ds_swt]
+DS22-S1 ansible_host=10.22.5.2 swt_id=0
+DS22-S2 ansible_host=10.22.5.3 swt_id=1
+
+[dc1_eg_swt]
+DC1-S1 ansible_host=10.1.5.11 swt_id=0
+
+[dc1_fw]
+DC1-FW ansible_host=10.1.5.2 fw_id=0
+
+[dc2_eg_swt]
+DC2-S1 ansible_host=10.2.5.11 swt_id=0
+
+[dc2_fw]
+DC2-FW ansible_host=10.2.5.2 fw_id=0
 
 

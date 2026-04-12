@@ -1,10 +1,8 @@
 ---
-- name: Configure site21 switches only
-  hosts: s21_ds_swt
+- name: Configure site22 switches only
+  hosts: s22_ds_swt
   gather_facts: no
   ignore_unreachable: yes
   roles:
     - switches
-
-
 

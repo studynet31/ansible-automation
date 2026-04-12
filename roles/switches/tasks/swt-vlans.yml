@@ -10,7 +10,7 @@
   ios_config:
     lines:
       - "interface vlan {{ item.id }}"
-      - "ip address {{ item.ip_base }}.{{ item.start + switch_id }} {{ item.mask }}"
+      - "ip address {{ item.ip_base }}.{{ item.start + swt_id }} {{ item.mask }}"
       - "no shutdown"
   loop: "{{ vlans }}"
   when: item.ip_base is defined and item.mask is defined

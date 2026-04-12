@@ -1,0 +1,11 @@
+# login details 
+ansible_user: "admin"
+ansible_ssh_pass: "Cisco123"
+ansible_network_os: "ios"
+ansible_connection: "network_cli"
+
+loopbacks:
+  - {id: 221, ip_base: 22.22.121, mask: 255.255.255.255, start: 1}
+  - {id: 222, ip_base: 22.22.122, mask: 255.255.255.255, start: 1}
+  - {id: 223, ip_base: 22.22.123, mask: 255.255.255.255, start: 1}
+

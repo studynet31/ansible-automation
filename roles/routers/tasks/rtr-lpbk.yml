@@ -1,0 +1,10 @@
+---
+- name: Configure loopback interfaces
+  ios_config:
+    lines:
+      - "interface loopback {{ item.id }}"
+      - "description s21-loopback"
+      - "ip address {{ item.ip_base }}.{{ item.start + rtr_id }} {{ item.mask }}"
+  loop: "{{ loopbacks }}"
+  when: item.ip_base is defined and item.mask is defined
+

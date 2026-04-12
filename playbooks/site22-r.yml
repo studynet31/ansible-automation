@@ -1,5 +1,5 @@
-- name: Configure site21 routers only
-  hosts: s21_eg_rtr
+- name: Configure site22 routers only
+  hosts: s22_eg_rtr
   gather_facts: no
   ignore_unreachable: yes
   roles:

@@ -1,0 +1,26 @@
+- name: Configure loopbacks via RESTCONF
+  uri:
+    url: "https://{{ ansible_host }}/restconf/data/ietf-interfaces:interfaces/interface=Loopback{{ item.id }}"
+    method: PUT
+    user: "{{ ansible_user }}"
+    password: "{{ ansible_password }}"
+    force_basic_auth: yes
+    headers:
+      Content-Type: "application/yang-data+json"
+      Accept: "application/yang-data+json"
+    body_format: json
+    body:
+      ietf-interfaces:interface:
+        name: "Loopback{{ item.id }}"
+        type: "iana-if-type:softwareLoopback"
+        enabled: true
+        description: "s21-loopback"
+        ietf-ip:ipv4:
+          address:
+            - ip: "{{ item.ip_base }}.{{ item.start + rtr_id }}"
+              netmask: "{{ item.mask }}"
+    validate_certs: no
+    status_code: [200, 201, 204]
+  loop: "{{ loopbacks }}"
+  when: item.ip_base is defined and item.mask is defined
+
