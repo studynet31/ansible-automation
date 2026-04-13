@@ -6,8 +6,10 @@ pipeline {
     }
 parameters {
     choice(name: 'PLAYBOOK', choices: [
-        'playbooks/site21-s.yml',
-        'playbooks/site21-r.yml'
+        'playbooks/site21-r.yml',
+        'playbooks/site21-2.yml'
+        'playbooks/site22-r.yml',
+        'playbooks/site22-s.yml'
     ], description: 'Select playbook')
 }
 
@@ -40,3 +42,4 @@ parameters {
         }
     }
 }
+
