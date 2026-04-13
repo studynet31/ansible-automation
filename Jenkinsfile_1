@@ -11,6 +11,9 @@ parameters {
         'playbooks/site22-r.yml',
         'playbooks/site22-s.yml'
     ], description: 'Select playbook')
+
+string(name: 'LIMIT', defaultValue: '', description: 'Limit hosts (optional)')
+
 }
 
     stages {
