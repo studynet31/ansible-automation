@@ -4,5 +4,5 @@
   gather_facts: no
   ignore_unreachable: yes
   roles:
-    - switches
+    - s22_switches
 

@@ -4,7 +4,7 @@
   gather_facts: no
   ignore_unreachable: yes
   roles:
-    - switches
+    - s21_switches
 
 
 
