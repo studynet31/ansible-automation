@@ -41,9 +41,9 @@ parameters {
                 $VENV/ansible-playbook \
                 -i hosts \
                 $PLAYBOOK
-   	        -e "ansible_user=${ANSIBLE_USER}" \
-                -e "ansible_password=${ANSIBLE_PASS}" \
-       	        -e "ansible_ssh_pass=${ANSIBLE_PASS}"
+   	        -e "ansible_user=$ANSIBLE_USER" \
+                -e "ansible_password=$ANSIBLE_PASS" \
+       	        -e "ansible_ssh_pass=$ANSIBLE_PASS"
                 """
             }
         }
