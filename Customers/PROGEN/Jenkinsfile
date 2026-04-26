@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+
+    environment {
+        VENV = "/home/vikrant/venv-ansible/bin"
+    }
+parameters {
+    choice(name: 'PLAYBOOK', choices: [
+        'Customers/PROGEN/playbooks/cd9392_swt.yml',
+        'Customers/PROGEN/playbooks/cd9392_rtr.yml',
+    ], description: 'Select playbook')
+
+    string(name: 'ANSIBLE_USER', defaultValue: '', description: 'Enter SSH Username')
+    password(name: 'ANSIBLE_PASS', defaultValue: '', description: 'Enter SSH Password')
+
+}
+
+    stages {
+
+        stage('Debug') {
+            steps {
+                sh '''
+                echo "User:"
+                whoami
+
+                echo "Workspace:"
+                pwd
+
+                ls -l
+                '''
+            }
+        }
+
+        stage('Run Ansible') {
+            steps {
+                sh """
+                $VENV/ansible --version
+
+                $VENV/ansible-playbook \
+                -i Customers/PROGEN/inventory.ini \
+                $PLAYBOOK \
+   	        -e "ansible_user=$ANSIBLE_USER" \
+                -e "ansible_password=$ANSIBLE_PASS" \
+       	        -e "ansible_ssh_pass=$ANSIBLE_PASS"
+                """
+            }
+        }
+    }
+}
+

@@ -1,0 +1,8 @@
+---
+- name: Configure site21 switches only
+  hosts: wnz
+  gather_facts: no
+  ignore_unreachable: yes
+  roles:
+    - cd9392-swt
+
